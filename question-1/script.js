@@ -20,6 +20,18 @@ function fibonacci(num){
     }
     return num2;
 }
+//función para querar archivo output.txt
+function WriteToFile(text){ 
+    var fs = require('fs');
+
+    fs.writeFile("output.txt",text.toString(), function(err) {
+    if (err) {
+        return console.log(err);
+    }
+
+    console.log("El archivo fue creado correctamente");
+    });
+}
 
 //Procedimiento 
 let prompt = require("prompt");
@@ -30,5 +42,6 @@ console.log("Ingresa el número de peldaños de las escaleras"); //Obtener el nu
 prompt.get(["name"], function(err, res){
     let num = parseInt(res.name);
     let numformas = fibonacci(num);
+    WriteToFile(numformas);
     console.log(numformas);
 });
